@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuvia Flow — Deja de organizar. Empieza a ejecutar.</title>
+  <meta name="description" content="Sistema de ejecución con IA para founders. Gestión contextual, priorización inteligente y modo foco — todo en un solo lugar." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+          colors: {
+            nuvia: { bg: '#020617', card: '#0f172a', border: 'rgba(255,255,255,0.08)', accent: '#60a5fa' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glow { filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.4)); }
+    html { scroll-behavior: smooth; }
+    #cosmic-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    #cosmic-bg canvas { display: block; width: 100%; height: 100%; }
+    #cosmic-bg .cosmic-ship {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      width: min(36vw, 340px);
+      max-width: 85vw;
+      height: auto;
+      opacity: 0.18;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 0 28px rgba(34, 211, 238, 0.18));
+      will-change: transform;
+      animation: cosmic-ship-drift 100s linear infinite;
+    }
+    /* Ship art faces left — drift right → left across the viewport */
+    @keyframes cosmic-ship-drift {
+      0% {
+        transform: translate3d(110vw, 0, 0) rotate(2deg) scale(0.92);
+      }
+      100% {
+        transform: translate3d(-60vw, -5vh, 0) rotate(-3deg) scale(1);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #cosmic-bg .cosmic-ship {
+        animation: none;
+        opacity: 0.12;
+        transform: translate3d(15vw, 0, 0) rotate(-2deg);
+      }
+    }
+    .hero-gradient-text {
+      background: linear-gradient(90deg, #60a5fa, #67e8f9, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#020617] text-slate-100 antialiased font-sans">
+
+<div id="cosmic-bg" aria-hidden="true"></div>
+<div id="page-shell" class="relative z-10">
+
+<!-- ========== HEADER ========== -->
+<header class="sticky top-0 z-50 border-b border-white/10 bg-[#020617]/90 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#hero" class="shrink-0 text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.6)]" aria-label="Nuvia Flow">
+      <svg viewBox="0 0 370 40.32953809127095" class="h-7 sm:h-9 w-auto" fill="currentColor" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <g transform="matrix(0.8403331789752578,0,0,0.8403331789752578,-6.974765545775474,-21.78142832387646)">
+          <path d="M8.3,54.9c0,0,42,31.3,82.1,8.4C90.5,63.3,44.2,74.9,8.3,54.9z" />
+          <path d="M44.8,28.3c0,0,18.9,79.3,46.8,4.9C91.7,33.1,66.5,89.9,44.8,28.3z" />
+          <circle cx="70.9" cy="50.5" r="3.9" />
+        </g>
+        <g transform="matrix(2.65407757104508,0,0,2.65407757104508,85.15319881847057,-13.270387855225401)">
+          <path d="M11.464844 5.888672 l2.919922 0 l0 14.111328 l-3.388672 0 l-6.25 -10.087891 l0 10.087891 l-2.919922 0 l0 -14.111328 l3.349609 0 l6.289063 10.029297 l0 -10.029297 z M24.316407 9.960938 l2.8125 0 l0 10.039063 l-2.666016 0 l-0.068359 -1.210937 c-0.703125 0.888672 -1.816406 1.40625 -3.193359 1.40625 c-2.412109 0 -3.740234 -1.259766 -3.740234 -3.476562 l0 -6.757812 l2.822266 0 l0 6.152344 c0 1.328125 0.830078 1.816406 1.806641 1.816406 c1.162109 0 2.216797 -0.585937 2.226563 -2.431641 l0 -5.537109 z M36.572265 9.960938 l2.978516 0 l-4.277344 10.039063 l-2.441406 0 l-4.228516 -10.039062 l2.958984 0 l2.5 6.865234 z M42.460938 8.457031 c-0.888672 0 -1.630859 -0.722656 -1.630859 -1.621094 c0 -0.888672 0.742188 -1.611328 1.630859 -1.611328 c0.869141 0 1.611328 0.722656 1.611328 1.611328 c0 0.898438 -0.742187 1.621094 -1.611328 1.621094 z M41.025391 20 l0 -10.039062 l2.832031 0 l0 10.039063 l-2.832031 0 z M55 17.275391 c0 1.230469 0.117188 2.011719 0.244141 2.451172 l0 0.273438 l-2.626953 0 l-0.224609 -1.09375 c-0.751953 0.908203 -2.050781 1.289063 -3.222656 1.289063 c-1.582031 0 -3.125 -0.703125 -3.125 -2.792969 c0 -2.080078 1.552734 -2.783203 3.652344 -3.242187 l1.650391 -0.371094 c0.712891 -0.166016 0.966797 -0.410156 0.966797 -0.820312 c0 -0.986328 -0.898437 -1.259766 -1.689453 -1.259766 c-1.015625 0 -1.787109 0.400391 -1.962891 1.533203 l-2.490234 -0.449219 c0.419922 -2.080078 1.943359 -3.027344 4.609375 -3.027344 c2.011719 0 4.21875 0.595703 4.21875 3.623047 l0 3.886719 z M50.048828 18.291016 c1.337891 0 2.412109 -0.888672 2.412109 -2.880859 l-2.382812 0.673828 c-0.78125 0.185547 -1.347656 0.458984 -1.347656 1.132813 c0 0.722656 0.595703 1.074219 1.318359 1.074219 z M71.621093 8.466797 l-5.371094 0 l0 3.203125 l4.638672 0 l0 2.548828 l-4.638672 0 l0 5.78125 l-2.949219 0 l0 -14.111328 l8.320313 0 l0 2.578125 z M73.75 20 l0 -15 l2.841797 0 l0 15 l-2.841797 0 z M84.179688 20.195313 c-3.193359 0 -5.498047 -1.943359 -5.498047 -5.224609 c0 -3.261719 2.285156 -5.205078 5.498047 -5.205078 c3.232422 0 5.507813 1.943359 5.507813 5.205078 c0 3.28125 -2.285156 5.224609 -5.507812 5.224609 z M84.150391 17.958984 c1.630859 0 2.744141 -1.191406 2.744141 -2.988281 s-1.113281 -2.988281 -2.744141 -2.988281 c-1.572266 0 -2.675781 1.191406 -2.675781 2.988281 s1.103516 2.988281 2.675781 2.988281 z M104.414063 9.960938 l2.910156 0 l-3.515625 10.048828 l-2.607422 0 l-2.324219 -6.630859 l-2.34375 6.630859 l-2.646484 0 l-3.447266 -10.048828 l2.900391 0 l2.070313 6.533203 l2.373047 -6.533203 l2.158203 0 l2.363281 6.513672 z" />
+        </g>
+      </svg>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm text-slate-400">
+      <a href="#how-it-works" class="hover:text-slate-100 transition" data-i18n="nav.howItWorks">Cómo funciona</a>
+      <a href="#features" class="hover:text-slate-100 transition" data-i18n="nav.features">Funciones</a>
+      <a href="#pricing" class="hover:text-slate-100 transition" data-i18n="nav.pricing">Precios</a>
+      <a href="#faq" class="hover:text-slate-100 transition" data-i18n="nav.faq">Preguntas</a>
+    </nav>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="https://app.nuviaflow.app/" class="hidden sm:inline-flex text-sm font-medium text-slate-400 hover:text-slate-100 transition px-2" data-i18n="nav.login">Iniciar sesión</a>
+      <button type="button" id="lang-es" aria-label="Español" class="lang-btn p-1.5 rounded-lg border border-white/10 hover:border-blue-400/50 hover:bg-slate-800/60 transition" title="Español">🇪🇸</button>
+      <button type="button" id="lang-en" aria-label="English" class="lang-btn p-1.5 rounded-lg border border-white/10 hover:border-blue-400/50 hover:bg-slate-800/60 transition" title="English">🇺🇸</button>
+      <a href="https://app.nuviaflow.app/" class="hidden sm:inline-flex text-sm font-medium px-6 py-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="nav.startFree">Empezar gratis</a>
+      <button type="button" id="mobile-menu-btn" class="md:hidden p-1.5 rounded-lg border border-white/10 hover:border-blue-400/50 hover:bg-slate-800/60 transition" aria-label="Menu">
+        <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-[#020617]/95 backdrop-blur-md">
+    <nav class="flex flex-col px-6 py-4 gap-3 text-sm text-slate-400">
+      <a href="#how-it-works" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.howItWorks">Cómo funciona</a>
+      <a href="#features" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.features">Funciones</a>
+      <a href="#pricing" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.pricing">Precios</a>
+      <a href="#faq" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.faq">Preguntas</a>
+      <a href="https://app.nuviaflow.app/" class="sm:hidden text-sm font-medium text-slate-400 hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.login">Iniciar sesión</a>
+      <a href="https://app.nuviaflow.app/" class="sm:hidden inline-flex justify-center text-sm font-medium px-6 py-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 mt-1 mobile-nav-link" data-i18n="nav.startFree">Empezar gratis</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== 1. HERO ========== -->
+<section id="hero" class="py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <div>
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium tracking-wide mb-8">
+        <svg class="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+        <span data-i18n="hero.pill">Sistema Inteligente de Ejecución</span>
+      </span>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mb-6">
+        <span class="text-slate-50 block" data-i18n="hero.line1">Deja de organizar.</span>
+        <span class="hero-gradient-text block" data-i18n="hero.line2">Empieza a ejecutar.</span>
+      </h1>
+      <p class="text-lg text-slate-400 mb-10 max-w-lg" data-i18n="hero.subtitle">
+        Nuvia Flow convierte ideas dispersas en acción estructurada — con gestión contextual, priorización dinámica y guía de ejecución con IA.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="https://app.nuviaflow.app/" class="inline-flex items-center px-8 py-4 rounded-full bg-blue-500 text-white font-medium hover:bg-blue-600 transition shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="hero.ctaPrimary">Empezar gratis</a>
+        <a href="#how-it-works" class="inline-flex items-center px-8 py-4 rounded-full border border-white/15 text-slate-300 font-medium hover:bg-white/5 hover:border-white/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="hero.ctaSecondary">Ver cómo funciona</a>
+      </div>
+    </div>
+
+    <!-- Product mock UI -->
+    <div class="rounded-2xl bg-slate-900/60 border border-white/10 overflow-hidden shadow-2xl shadow-blue-500/5">
+      <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-slate-900/80">
+        <div class="w-3 h-3 rounded-full bg-red-400/40"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-400/40"></div>
+        <div class="w-3 h-3 rounded-full bg-green-400/40"></div>
+        <span class="ml-3 text-xs text-slate-500">Nuvia Flow</span>
+      </div>
+      <div class="p-5 space-y-3">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs">🎯</span>
+          <span class="text-sm font-medium text-slate-300">Focus · Today</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-blue-500/10 border border-blue-400/20">
+          <div class="w-2 h-2 rounded-full bg-blue-400 shrink-0"></div>
+          <div class="min-w-0 flex-1">
+            <p class="text-sm text-slate-200 truncate">Ship landing page v2</p>
+            <p class="text-[10px] text-slate-500">Product · Launch</p>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 shrink-0">Focus</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/60 border border-white/5">
+          <div class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></div>
+          <div class="min-w-0 flex-1">
+            <p class="text-sm text-slate-300 truncate">Review onboarding flow</p>
+            <p class="text-[10px] text-slate-500">Growth · Q2 Sprint</p>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 shrink-0">Next</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/60 border border-white/5">
+          <div class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></div>
+          <div class="min-w-0 flex-1">
+            <p class="text-sm text-slate-400 truncate">Update pricing strategy</p>
+            <p class="text-[10px] text-slate-500">Revenue · Pricing</p>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 shrink-0">Strategic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 2. PROBLEM ========== -->
+<section id="problem" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-3 text-slate-100" data-i18n="problem.title">La mayoría de los founders están ocupados — no son efectivos</h2>
+    <p class="text-slate-400 text-center mb-10" data-i18n="problem.subtitle">¿Te suena?</p>
+
+    <div class="grid gap-3 max-w-xl mx-auto mb-12">
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 mt-0.5 shrink-0">✕</span>
+        <span class="text-slate-300 text-sm" data-i18n="problem.b1">Tareas dispersas en cinco apps diferentes</span>
+      </div>
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 mt-0.5 shrink-0">✕</span>
+        <span class="text-slate-300 text-sm" data-i18n="problem.b2">El cambio constante de contexto mata tu trabajo profundo</span>
+      </div>
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 mt-0.5 shrink-0">✕</span>
+        <span class="text-slate-300 text-sm" data-i18n="problem.b3">Sin priorización real — solo intuición y ansiedad</span>
+      </div>
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 mt-0.5 shrink-0">✕</span>
+        <span class="text-slate-300 text-sm" data-i18n="problem.b4">El trabajo estratégico enterrado bajo lo urgente</span>
+      </div>
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 mt-0.5 shrink-0">✕</span>
+        <span class="text-slate-300 text-sm" data-i18n="problem.b5">Organizas más de lo que ejecutas</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-red-500/10">
+        <p class="text-sm font-medium text-red-400/80 mb-3" data-i18n="problem.beforeTitle">Tu realidad hoy</p>
+        <p class="text-sm text-slate-400" data-i18n="problem.beforeDesc">Decenas de pestañas abiertas. Múltiples apps. Listas que nunca terminas. Cada mañana empieza con "¿dónde me quedé?"</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-blue-400/20">
+        <p class="text-sm font-medium text-blue-400/80 mb-3" data-i18n="problem.afterTitle">Tu vida con Nuvia Flow</p>
+        <p class="text-sm text-slate-400" data-i18n="problem.afterDesc">Un solo sistema. Prioridades claras. Lo abres y sabes exactamente qué hacer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3. THE SHIFT ========== -->
+<section id="shift" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-slate-100" data-i18n="shift.title">Tu trabajo no necesita más organización. Necesita inteligencia.</h2>
+    <p class="text-slate-400 max-w-2xl mx-auto mb-10" data-i18n="shift.subtitle">Las herramientas tradicionales almacenan tareas. Nuvia Flow entiende el contexto, evalúa impacto y te dice qué importa.</p>
+
+    <div class="overflow-x-auto rounded-2xl border border-white/5">
+      <table class="w-full min-w-[480px] text-sm text-left">
+        <thead>
+          <tr class="bg-slate-800/40 border-b border-white/10">
+            <th class="py-4 px-6 text-slate-500 font-medium" data-i18n="shift.colOld">Herramientas tradicionales</th>
+            <th class="py-4 px-6 text-blue-400 font-medium" data-i18n="shift.colNew">Nuvia Flow</th>
+          </tr>
+        </thead>
+        <tbody class="text-slate-300">
+          <tr class="border-b border-white/5">
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r1a">Listas estáticas</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r1b">Tareas con contexto</td>
+          </tr>
+          <tr class="border-b border-white/5">
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r2a">Priorización manual</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r2b">Priorización asistida por IA</td>
+          </tr>
+          <tr class="border-b border-white/5">
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r3a">Más organización</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r3b">Claridad de ejecución</td>
+          </tr>
+          <tr>
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r4a">Vistas y dashboards infinitos</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r4b">Un siguiente paso claro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 4. HOW IT WORKS ========== -->
+<section id="how-it-works" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-12 text-slate-100" data-i18n="how.title">Cómo funciona</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-full bg-blue-500/15 border border-blue-400/20 flex items-center justify-center mx-auto mb-5">
+          <span class="text-blue-400 font-semibold">1</span>
+        </div>
+        <h3 class="text-lg font-medium text-slate-100 mb-2" data-i18n="how.s1Title">Captura todo</h3>
+        <p class="text-sm text-slate-400" data-i18n="how.s1Desc">Añade con contexto inteligente — áreas, proyectos, tags. Las ideas entran sin romper tu flujo.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-full bg-blue-500/15 border border-blue-400/20 flex items-center justify-center mx-auto mb-5">
+          <span class="text-blue-400 font-semibold">2</span>
+        </div>
+        <h3 class="text-lg font-medium text-slate-100 mb-2" data-i18n="how.s2Title">Estructura automática</h3>
+        <p class="text-sm text-slate-400" data-i18n="how.s2Desc">Las tareas se organizan en áreas y proyectos con contexto completo. Sin ordenar manualmente.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-full bg-blue-500/15 border border-blue-400/20 flex items-center justify-center mx-auto mb-5">
+          <span class="text-blue-400 font-semibold">3</span>
+        </div>
+        <h3 class="text-lg font-medium text-slate-100 mb-2" data-i18n="how.s3Title">Ejecuta con inteligencia</h3>
+        <p class="text-sm text-slate-400" data-i18n="how.s3Desc">El modo foco muestra exactamente qué hacer ahora — basado en prioridad, contexto e impacto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. CORE FEATURES ========== -->
+<section id="features" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-3 text-slate-100" data-i18n="feat.title">Todo lo que necesitas para ejecutar</h2>
+    <p class="text-slate-400 text-center max-w-xl mx-auto mb-12" data-i18n="feat.subtitle">Seis capacidades que transforman cómo trabajas.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">🧠</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f1t">Priorización con IA</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f1d">Sabe qué mueve la aguja. Deja de adivinar qué tarea importa más.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">🎯</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f2t">Modo foco</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f2d">Un camino de ejecución claro. Sin ruido, sin distracciones, sin fatiga de decisión.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">🗂</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f3t">Estructura contextual</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f3d">Tareas conectadas a áreas, proyectos y estrategia. Todo en contexto.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">⚡</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f4t">Captura rápida</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f4d">Captura ideas en segundos — área, proyecto, prioridad, todo inline. Nunca pierdas un pensamiento.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">📊</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f5t">Analytics de ejecución</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f5d">Ve a dónde va tu tiempo y energía. Entiende tus patrones, mejora tu output.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">🧩</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f6t">Personal + trabajo en un sistema</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f6d">Sin fragmentación de herramientas. Vida y trabajo en una sola capa de ejecución.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6. AUDIENCE ========== -->
+<section id="audience" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-12 text-slate-100" data-i18n="aud.title">Diseñado para builders</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <p class="text-sm font-medium text-blue-400/80 uppercase tracking-wider mb-5" data-i18n="aud.forTitle">Esto es para ti si...</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for1">Eres un founder construyendo algo real</span></li>
+          <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for2">Eres indie hacker manejando múltiples proyectos</span></li>
+          <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for3">Lideras un equipo pequeño remoto (1–20 personas)</span></li>
+          <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for4">Eres un operador que piensa en sistemas</span></li>
+          <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for5">Ejecutas — no solo planeas</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-5" data-i18n="aud.notTitle">No es para ti si...</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2.5 text-sm text-slate-500"><span class="mt-0.5 shrink-0">—</span> <span data-i18n="aud.not1">Quieres proceso enterprise pesado y aprobaciones</span></li>
+          <li class="flex items-start gap-2.5 text-sm text-slate-500"><span class="mt-0.5 shrink-0">—</span> <span data-i18n="aud.not2">Solo necesitas un checklist simple</span></li>
+          <li class="flex items-start gap-2.5 text-sm text-slate-500"><span class="mt-0.5 shrink-0">—</span> <span data-i18n="aud.not3">Prefieres configurar herramientas que hacer el trabajo</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7. SOCIAL PROOF ========== -->
+<section id="social" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-12 text-slate-100" data-i18n="social.title">Creado por un founder, para founders</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 text-left">
+        <p class="text-sm text-slate-300 italic mb-4" data-i18n="social.q1">"Por fin, una herramienta que piensa como yo. No más organización — más ejecución."</p>
+        <p class="text-xs text-slate-500" data-i18n="social.a1">Usuario beta — Founder SaaS</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 text-left">
+        <p class="text-sm text-slate-300 italic mb-4" data-i18n="social.q2">"Dejé de usar tres apps la semana que empecé con Nuvia Flow."</p>
+        <p class="text-xs text-slate-500" data-i18n="social.a2">Usuario beta — Indie hacker</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 text-left">
+        <p class="text-sm text-slate-300 italic mb-4" data-i18n="social.q3">"La priorización con IA me ahorró horas de '¿en qué debería trabajar?' cada semana."</p>
+        <p class="text-xs text-slate-500" data-i18n="social.a3">Usuario beta — Product builder</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. FAQ ========== -->
+<section id="faq" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-12 text-slate-100" data-i18n="faq.title">Preguntas frecuentes</h2>
+    <div class="space-y-4">
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5">
+        <h3 class="text-base font-medium text-slate-100 mb-2" data-i18n="faq.q1">¿No es otra app de tareas más?</h3>
+        <p class="text-sm text-slate-400" data-i18n="faq.a1">Las apps de tareas almacenan tu trabajo. Nuvia Flow impulsa la ejecución. Te dice qué hacer basándose en contexto y prioridad — no solo dónde ponerlo.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5">
+        <h3 class="text-base font-medium text-slate-100 mb-2" data-i18n="faq.q2">¿Por qué no Notion?</h3>
+        <p class="text-sm text-slate-400" data-i18n="faq.a2">Notion es un workspace para todo. Nuvia Flow es un sistema de ejecución para lo que importa. Notion almacena; Nuvia Flow decide.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5">
+        <h3 class="text-base font-medium text-slate-100 mb-2" data-i18n="faq.q3">¿Por qué no ClickUp?</h3>
+        <p class="text-sm text-slate-400" data-i18n="faq.a3">ClickUp te da más vistas y más configuración. Nuvia Flow te da un siguiente paso claro. Menos setup, más ejecución.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 9. PRICING ========== -->
+<section id="pricing" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-3 text-slate-100" data-i18n="price.title">Precios simples y transparentes</h2>
+    <p class="text-slate-400 text-center mb-12" data-i18n="price.subtitle">Empieza a construir momentum hoy.</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Starter -->
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 flex flex-col">
+        <h3 class="text-lg font-semibold text-slate-100 mb-1">Starter</h3>
+        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.sPrice">$15/mes</p>
+        <p class="text-sm text-slate-400 mb-6" data-i18n="price.sDesc">Para individuos que empiezan</p>
+        <ul class="space-y-2.5 mb-8 flex-1">
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.sF1">Tareas ilimitadas</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.sF2">Áreas y proyectos</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.sF3">Captura rápida</span></li>
+        </ul>
+        <a href="#early-access" class="block text-center px-6 py-3 rounded-xl border border-white/15 text-slate-300 font-medium hover:bg-white/5 hover:border-white/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.sCta">Unirse a la lista</a>
+      </div>
+
+      <!-- Pro (highlighted) -->
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-blue-500/40 flex flex-col relative shadow-lg shadow-blue-500/5">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] font-medium px-3 py-0.5 rounded-full bg-blue-500 text-white whitespace-nowrap" data-i18n="price.pBadge">Más popular</span>
+        <h3 class="text-lg font-semibold text-slate-100 mb-1">Pro</h3>
+        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.pPrice">$25/mes</p>
+        <p class="text-sm text-slate-400 mb-6" data-i18n="price.pDesc">Para builders serios</p>
+        <ul class="space-y-2.5 mb-8 flex-1">
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF1">Todo en Starter</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF2">Priorización con IA</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF3">Modo foco</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF4">Analytics de ejecución</span></li>
+        </ul>
+        <a href="https://app.nuviaflow.app/" class="block text-center px-6 py-3 rounded-full bg-blue-500 text-white font-medium hover:bg-blue-600 transition shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.pCta">Unirse a la lista</a>
+      </div>
+
+      <!-- Team -->
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 flex flex-col">
+        <h3 class="text-lg font-semibold text-slate-100 mb-1">Team</h3>
+        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.tPrice">$49/mes</p>
+        <p class="text-sm text-slate-400 mb-6" data-i18n="price.tDesc">Para equipos pequeños hasta 20</p>
+        <ul class="space-y-2.5 mb-8 flex-1">
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF1">Todo en Pro</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF2">Workspace de equipo</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF3">Proyectos compartidos</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF4">Soporte prioritario</span></li>
+        </ul>
+        <a href="#early-access" class="block text-center px-6 py-3 rounded-xl border border-white/15 text-slate-300 font-medium hover:bg-white/5 hover:border-white/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.tCta">Unirse a la lista</a>
+      </div>
+    </div>
+
+    <p class="text-center text-sm text-slate-500 mt-8" data-i18n="price.trust">Precios de lanzamiento — Únete a la lista hoy. Sin tarjeta de crédito.</p>
+  </div>
+</section>
+
+<!-- ========== 10. FINAL CTA ========== -->
+<section id="early-access" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-slate-100" data-i18n="cta.title">La ejecución es una ventaja competitiva.</h2>
+    <p class="text-lg text-slate-400 mb-10" data-i18n="cta.subtitle">Deja de ahogarte en tareas. Construye con claridad.</p>
+    <a href="https://app.nuviaflow.app/" class="inline-flex items-center px-10 py-4 rounded-full bg-blue-500 text-white font-medium text-lg hover:bg-blue-600 transition shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="cta.button">Empezar gratis</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="py-8 px-6 border-t border-white/5 text-center text-slate-500 text-sm" data-i18n="footer.tagline">
+  Nuvia Flow — El sistema de ejecución para builders ambiciosos.
+</footer>
+
+</div>
+
+<script src="cosmic-bg.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
