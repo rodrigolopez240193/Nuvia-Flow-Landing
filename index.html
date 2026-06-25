@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nuvia Flow — Deja de organizar. Empieza a ejecutar.</title>
-  <meta name="description" content="Sistema de ejecución con IA para founders. Gestión contextual, priorización inteligente y modo foco — todo en un solo lugar." />
+  <title>Nuvia Flow — Coach de ejecución con IA para founders</title>
+  <meta name="description" content="Personal Operating System con coach proactivo en Telegram. Today's Mission, accountability, planes de ejecución y métricas reales — para founders que cierran, no solo planean." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
@@ -93,6 +93,7 @@
     <nav class="hidden md:flex items-center gap-6 text-sm text-slate-400">
       <a href="#how-it-works" class="hover:text-slate-100 transition" data-i18n="nav.howItWorks">Cómo funciona</a>
       <a href="#features" class="hover:text-slate-100 transition" data-i18n="nav.features">Funciones</a>
+      <a href="#coach" class="hover:text-slate-100 transition" data-i18n="nav.coach">Nuvia Coach</a>
       <a href="#pricing" class="hover:text-slate-100 transition" data-i18n="nav.pricing">Precios</a>
       <a href="#faq" class="hover:text-slate-100 transition" data-i18n="nav.faq">Preguntas</a>
     </nav>
@@ -112,6 +113,7 @@
     <nav class="flex flex-col px-6 py-4 gap-3 text-sm text-slate-400">
       <a href="#how-it-works" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.howItWorks">Cómo funciona</a>
       <a href="#features" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.features">Funciones</a>
+      <a href="#coach" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.coach">Nuvia Coach</a>
       <a href="#pricing" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.pricing">Precios</a>
       <a href="#faq" class="hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.faq">Preguntas</a>
       <a href="https://app.nuviaflow.app/" class="sm:hidden text-sm font-medium text-slate-400 hover:text-slate-100 transition py-1 mobile-nav-link" data-i18n="nav.login">Iniciar sesión</a>
@@ -129,8 +131,8 @@
         <span data-i18n="hero.pill">Sistema Inteligente de Ejecución</span>
       </span>
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mb-6">
-        <span class="text-slate-50 block" data-i18n="hero.line1">Deja de organizar.</span>
-        <span class="hero-gradient-text block" data-i18n="hero.line2">Empieza a ejecutar.</span>
+        <span class="text-slate-50 block" data-i18n="hero.line1">Tu coach de ejecución</span>
+        <span class="hero-gradient-text block" data-i18n="hero.line2">te dice qué hacer hoy.</span>
       </h1>
       <p class="text-lg text-slate-400 mb-10 max-w-lg" data-i18n="hero.subtitle">
         Nuvia Flow convierte ideas dispersas en acción estructurada — con gestión contextual, priorización dinámica y guía de ejecución con IA.
@@ -150,34 +152,36 @@
         <span class="ml-3 text-xs text-slate-500">Nuvia Flow</span>
       </div>
       <div class="p-5 space-y-3">
-        <div class="flex items-center gap-2 mb-4">
+        <div class="flex items-center gap-2 mb-1">
           <span class="text-xs">🎯</span>
-          <span class="text-sm font-medium text-slate-300">Focus · Today</span>
+          <span class="text-sm font-medium text-slate-300" data-i18n="hero.mockToday">Hoy</span>
         </div>
-        <div class="flex items-center gap-3 p-3 rounded-lg bg-blue-500/10 border border-blue-400/20">
-          <div class="w-2 h-2 rounded-full bg-blue-400 shrink-0"></div>
+        <p class="text-[10px] text-slate-500 mb-3 uppercase tracking-wide" data-i18n="hero.mockMissionLabel">La tarea de hoy</p>
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-blue-500/10 border border-blue-400/30 shadow-[0_0_20px_-8px_rgba(96,165,250,0.4)]">
+          <div class="w-2 h-2 rounded-full bg-blue-400 shrink-0 animate-pulse"></div>
           <div class="min-w-0 flex-1">
-            <p class="text-sm text-slate-200 truncate">Ship landing page v2</p>
-            <p class="text-[10px] text-slate-500">Product · Launch</p>
+            <p class="text-sm font-medium text-slate-100 truncate" data-i18n="hero.mockMissionTask">Publicar landing v2</p>
+            <p class="text-[10px] text-slate-500" data-i18n="hero.mockMissionMeta">Producto · Lanzamiento</p>
           </div>
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 shrink-0">Focus</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/25 text-blue-200 shrink-0 font-medium" data-i18n="hero.mockMissionBadge">Today's Mission</span>
         </div>
-        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/60 border border-white/5">
-          <div class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></div>
-          <div class="min-w-0 flex-1">
-            <p class="text-sm text-slate-300 truncate">Review onboarding flow</p>
-            <p class="text-[10px] text-slate-500">Growth · Q2 Sprint</p>
-          </div>
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 shrink-0">Next</span>
+        <p class="text-[10px] text-slate-500 pt-2 uppercase tracking-wide flex items-center gap-1.5">
+          <span class="text-violet-400">◎</span>
+          <span data-i18n="hero.mockWatch">Under Nuvia's Watch</span>
+        </p>
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-slate-800/50 border border-white/5 opacity-80">
+          <div class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></div>
+          <p class="text-xs text-slate-400 truncate flex-1" data-i18n="hero.mockWatch1">Revisar funnel de onboarding</p>
         </div>
-        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/60 border border-white/5">
-          <div class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></div>
-          <div class="min-w-0 flex-1">
-            <p class="text-sm text-slate-400 truncate">Update pricing strategy</p>
-            <p class="text-[10px] text-slate-500">Revenue · Pricing</p>
-          </div>
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 shrink-0">Strategic</span>
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-slate-800/50 border border-white/5 opacity-80">
+          <div class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></div>
+          <p class="text-xs text-slate-400 truncate flex-1" data-i18n="hero.mockWatch2">Actualizar página de pricing</p>
         </div>
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-slate-800/50 border border-white/5 opacity-70">
+          <div class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></div>
+          <p class="text-xs text-slate-500 truncate flex-1" data-i18n="hero.mockWatch3">Preparar demo para inversores</p>
+        </div>
+        <p class="text-[10px] text-slate-600 italic pt-1" data-i18n="hero.mockHint">Sugerida — aún no es tu misión del coach</p>
       </div>
     </div>
   </div>
@@ -209,6 +213,10 @@
       <div class="flex items-start gap-3 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
         <span class="text-red-400 mt-0.5 shrink-0">✕</span>
         <span class="text-slate-300 text-sm" data-i18n="problem.b5">Organizas más de lo que ejecutas</span>
+      </div>
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 mt-0.5 shrink-0">✕</span>
+        <span class="text-slate-300 text-sm" data-i18n="problem.b6">Sabes qué hacer… pero nadie te empuja a terminarlo</span>
       </div>
     </div>
 
@@ -249,12 +257,20 @@
             <td class="py-3.5 px-6" data-i18n="shift.r2b">Priorización asistida por IA</td>
           </tr>
           <tr class="border-b border-white/5">
-            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r3a">Más organización</td>
-            <td class="py-3.5 px-6" data-i18n="shift.r3b">Claridad de ejecución</td>
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r3a">Recordatorios pasivos</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r3b">Coach que pregunta, interpreta y escala</td>
+          </tr>
+          <tr class="border-b border-white/5">
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r4a">50 tareas en "prioridad alta"</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r4b">1 misión proactiva · el resto en cola</td>
+          </tr>
+          <tr class="border-b border-white/5">
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r5a">App que olvidas abrir</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r5b">Telegram bidireccional en tu bolsillo</td>
           </tr>
           <tr>
-            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r4a">Vistas y dashboards infinitos</td>
-            <td class="py-3.5 px-6" data-i18n="shift.r4b">Un siguiente paso claro</td>
+            <td class="py-3.5 px-6 text-slate-500" data-i18n="shift.r6a">Planear sin ejecutar</td>
+            <td class="py-3.5 px-6" data-i18n="shift.r6b">Execution Plan + accountability loop</td>
           </tr>
         </tbody>
       </table>
@@ -289,46 +305,92 @@
         <p class="text-sm text-slate-400" data-i18n="how.s3Desc">El modo foco muestra exactamente qué hacer ahora — basado en prioridad, contexto e impacto.</p>
       </div>
     </div>
+
+    <div class="mt-16 pt-12 border-t border-white/5">
+      <h3 class="text-lg font-medium text-center text-slate-200 mb-8" data-i18n="how.loopTitle">El loop del coach</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-4 rounded-xl bg-slate-800/30 border border-white/5 text-center">
+          <p class="text-xs text-blue-400 font-medium mb-1" data-i18n="how.l1t">Standup matutino</p>
+          <p class="text-xs text-slate-500" data-i18n="how.l1d">Recap de ayer + candidatos numerados</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-800/30 border border-white/5 text-center">
+          <p class="text-xs text-blue-400 font-medium mb-1" data-i18n="how.l2t">Mission commit</p>
+          <p class="text-xs text-slate-500" data-i18n="how.l2d">Confirmas la tarea del día</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-800/30 border border-white/5 text-center">
+          <p class="text-xs text-blue-400 font-medium mb-1" data-i18n="how.l3t">Accountability nudges</p>
+          <p class="text-xs text-slate-500" data-i18n="how.l3d">Hecho · Progreso · Bloqueado</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-800/30 border border-white/5 text-center">
+          <p class="text-xs text-blue-400 font-medium mb-1" data-i18n="how.l4t">Execution Gap</p>
+          <p class="text-xs text-slate-500" data-i18n="how.l4d">Radar vs realidad semanal</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-
 <!-- ========== 5. CORE FEATURES ========== -->
 <section id="features" class="py-20 px-6 border-t border-white/5">
   <div class="max-w-5xl mx-auto">
     <h2 class="text-2xl md:text-3xl font-semibold text-center mb-3 text-slate-100" data-i18n="feat.title">Todo lo que necesitas para ejecutar</h2>
-    <p class="text-slate-400 text-center max-w-xl mx-auto mb-12" data-i18n="feat.subtitle">Seis capacidades que transforman cómo trabajas.</p>
+    <p class="text-slate-400 text-center max-w-xl mx-auto mb-12" data-i18n="feat.subtitle">Nueve capacidades. Un solo loop de ejecución.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
-        <div class="text-2xl mb-3" aria-hidden="true">🧠</div>
-        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f1t">Priorización con IA</h3>
-        <p class="text-sm text-slate-400" data-i18n="feat.f1d">Sabe qué mueve la aguja. Deja de adivinar qué tarea importa más.</p>
+        <div class="text-2xl mb-3" aria-hidden="true">💬</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f1t">Coach en Telegram</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f1d">Standup matutino, nudges inteligentes y respuestas con un tap.</p>
       </div>
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
         <div class="text-2xl mb-3" aria-hidden="true">🎯</div>
-        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f2t">Modo foco</h3>
-        <p class="text-sm text-slate-400" data-i18n="feat.f2d">Un camino de ejecución claro. Sin ruido, sin distracciones, sin fatiga de decisión.</p>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f2t">La tarea de hoy</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f2d">Una sola misión proactiva al día. El resto en cola bajo watch.</p>
       </div>
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
-        <div class="text-2xl mb-3" aria-hidden="true">🗂</div>
-        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f3t">Estructura contextual</h3>
-        <p class="text-sm text-slate-400" data-i18n="feat.f3d">Tareas conectadas a áreas, proyectos y estrategia. Todo en contexto.</p>
+        <div class="text-2xl mb-3" aria-hidden="true">◎</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f3t">Under Nuvia's Watch</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f3d">Tu radar de foco con límites Gentle, Balanced o Sergeant.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">📋</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f4t">Execution Plan</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f4d">Desglosa tareas complejas. Refina con voz o texto.</p>
       </div>
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
         <div class="text-2xl mb-3" aria-hidden="true">⚡</div>
-        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f4t">Captura rápida</h3>
-        <p class="text-sm text-slate-400" data-i18n="feat.f4d">Captura ideas en segundos — área, proyecto, prioridad, todo inline. Nunca pierdas un pensamiento.</p>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f5t">Captura inteligente</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f5d">Voz, @área, /proyecto y sugerencias semánticas.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">🗺</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f6t">Grafos de proyecto</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f6d">Dependencias, mapa visual y contexto por área.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
+        <div class="text-2xl mb-3" aria-hidden="true">🕯</div>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f7t">Rituals y visualizaciones</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f7d">Reflexión por área y tableros de visión.</p>
       </div>
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
         <div class="text-2xl mb-3" aria-hidden="true">📊</div>
-        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f5t">Analytics de ejecución</h3>
-        <p class="text-sm text-slate-400" data-i18n="feat.f5d">Ve a dónde va tu tiempo y energía. Entiende tus patrones, mejora tu output.</p>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f8t">Execution Gap</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f8d">Compromiso vs completado, semana a semana.</p>
       </div>
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-white/10 transition">
         <div class="text-2xl mb-3" aria-hidden="true">🧩</div>
-        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f6t">Personal + trabajo en un sistema</h3>
-        <p class="text-sm text-slate-400" data-i18n="feat.f6d">Sin fragmentación de herramientas. Vida y trabajo en una sola capa de ejecución.</p>
+        <h3 class="text-base font-medium text-slate-100 mb-1.5" data-i18n="feat.f9t">Todo en un sistema</h3>
+        <p class="text-sm text-slate-400" data-i18n="feat.f9d">Vida y trabajo, ES/EN, PWA instalable.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ========== 5b. MEET NUVIA ========== -->
+<section id="coach" class="py-20 px-6 border-t border-white/5">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-slate-100" data-i18n="coach.title">Conoce a Nuvia</h2>
+    <p class="text-blue-400/90 text-sm font-medium mb-6" data-i18n="coach.subtitle">Tu coach de ejecución — no un chatbot genérico</p>
+    <p class="text-slate-400 text-base leading-relaxed mb-4" data-i18n="coach.p1">Nuvia recuerda tus áreas, stakeholders y patrones.</p>
+    <p class="text-slate-400 text-base leading-relaxed" data-i18n="coach.p2">Te propone, tú confirmas. Te empuja, tú ejecutas.</p>
   </div>
 </section>
 
@@ -345,6 +407,7 @@
           <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for3">Lideras un equipo pequeño remoto (1–20 personas)</span></li>
           <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for4">Eres un operador que piensa en sistemas</span></li>
           <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for5">Ejecutas — no solo planeas</span></li>
+          <li class="flex items-start gap-2.5 text-sm text-slate-300"><span class="text-blue-400 mt-0.5 shrink-0">✓</span> <span data-i18n="aud.for6">Necesitas accountability real, no otra lista bonita</span></li>
         </ul>
       </div>
       <div>
@@ -361,22 +424,14 @@
 
 <!-- ========== 7. SOCIAL PROOF ========== -->
 <section id="social" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-12 text-slate-100" data-i18n="social.title">Creado por un founder, para founders</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 text-left">
-        <p class="text-sm text-slate-300 italic mb-4" data-i18n="social.q1">"Por fin, una herramienta que piensa como yo. No más organización — más ejecución."</p>
-        <p class="text-xs text-slate-500" data-i18n="social.a1">Usuario beta — Founder SaaS</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 text-left">
-        <p class="text-sm text-slate-300 italic mb-4" data-i18n="social.q2">"Dejé de usar tres apps la semana que empecé con Nuvia Flow."</p>
-        <p class="text-xs text-slate-500" data-i18n="social.a2">Usuario beta — Indie hacker</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 text-left">
-        <p class="text-sm text-slate-300 italic mb-4" data-i18n="social.q3">"La priorización con IA me ahorró horas de '¿en qué debería trabajar?' cada semana."</p>
-        <p class="text-xs text-slate-500" data-i18n="social.a3">Usuario beta — Product builder</p>
-      </div>
-    </div>
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-slate-100" data-i18n="social.title">Hecho por un founder, para founders</h2>
+    <p class="text-sm text-slate-400 mb-10 max-w-xl mx-auto leading-relaxed" data-i18n="social.subtitle">Un sistema pensado para quien construye en serio — no para llenar listas.</p>
+    <blockquote class="p-8 rounded-2xl bg-slate-800/30 border border-white/5 text-left mb-6">
+      <p class="text-base text-slate-300 italic leading-relaxed mb-4" data-i18n="social.quote">"No fallamos por falta de ideas. Fallamos porque nadie nos empuja a cerrar la que importa hoy."</p>
+      <p class="text-sm text-blue-400/90 not-italic" data-i18n="social.tagline">Personal Operating System con coach proactivo.</p>
+    </blockquote>
+    <p class="text-sm text-slate-500 leading-relaxed" data-i18n="social.built">Captura, misión del día, Telegram y métricas — en un solo loop de ejecución.</p>
   </div>
 </section>
 
@@ -395,7 +450,19 @@
       </div>
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5">
         <h3 class="text-base font-medium text-slate-100 mb-2" data-i18n="faq.q3">¿Por qué no ClickUp?</h3>
-        <p class="text-sm text-slate-400" data-i18n="faq.a3">ClickUp te da más vistas y más configuración. Nuvia Flow te da un siguiente paso claro. Menos setup, más ejecución.</p>
+        <p class="text-sm text-slate-400" data-i18n="faq.a3">ClickUp te da más vistas y más configuración. Nuvia Flow te da una misión del día y un coach que hace follow-up.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5">
+        <h3 class="text-base font-medium text-slate-100 mb-2" data-i18n="faq.q4">¿Necesito Telegram?</h3>
+        <p class="text-sm text-slate-400" data-i18n="faq.a4">No es obligatorio — la app funciona sola. Pero Telegram es donde el coach cobra vida.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5">
+        <h3 class="text-base font-medium text-slate-100 mb-2" data-i18n="faq.q5">¿En qué se diferencia de Sunsama o Motion?</h3>
+        <p class="text-sm text-slate-400" data-i18n="faq.a5">Ellos planean tu día. Nuvia hace commit + follow-up con loop bidireccional.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5">
+        <h3 class="text-base font-medium text-slate-100 mb-2" data-i18n="faq.q6">¿La IA decide por mí?</h3>
+        <p class="text-sm text-slate-400" data-i18n="faq.a6">No. Nuvia sugiere y empuja con contexto. Tú confirmas la misión y marcas progreso.</p>
       </div>
     </div>
   </div>
@@ -404,54 +471,60 @@
 <!-- ========== 9. PRICING ========== -->
 <section id="pricing" class="py-20 px-6 border-t border-white/5">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-3 text-slate-100" data-i18n="price.title">Precios simples y transparentes</h2>
-    <p class="text-slate-400 text-center mb-12" data-i18n="price.subtitle">Empieza a construir momentum hoy.</p>
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-3 text-slate-100" data-i18n="price.title">Tres planes. Crece a tu ritmo.</h2>
+    <p class="text-slate-400 text-center mb-12 max-w-xl mx-auto" data-i18n="price.subtitle">Empieza en Free. Sube cuando necesites más IA o el coach completo.</p>
 
     <div class="grid md:grid-cols-3 gap-6">
-      <!-- Starter -->
+      <!-- Free -->
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 flex flex-col">
-        <h3 class="text-lg font-semibold text-slate-100 mb-1">Starter</h3>
-        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.sPrice">$15/mes</p>
-        <p class="text-sm text-slate-400 mb-6" data-i18n="price.sDesc">Para individuos que empiezan</p>
+        <h3 class="text-lg font-semibold text-slate-100 mb-1" data-i18n="price.freeName">Free</h3>
+        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.freePrice">$0</p>
+        <p class="text-sm text-slate-400 mb-6" data-i18n="price.freeDesc">Organiza y prueba Nuvia Flow</p>
         <ul class="space-y-2.5 mb-8 flex-1">
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.sF1">Tareas ilimitadas</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.sF2">Áreas y proyectos</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.sF3">Captura rápida</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.freeF1">Tareas y proyectos ilimitados</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.freeF2">Hasta 3 áreas</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.freeF3">5 créditos IA al mes</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.freeF4">Today, captura rápida y estadísticas básicas</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.freeF5">Canvas e inbox semántico</span></li>
         </ul>
-        <a href="#early-access" class="block text-center px-6 py-3 rounded-xl border border-white/15 text-slate-300 font-medium hover:bg-white/5 hover:border-white/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.sCta">Unirse a la lista</a>
+        <a href="https://app.nuviaflow.app/" class="block text-center px-6 py-3 rounded-xl border border-white/15 text-slate-300 font-medium hover:bg-white/5 hover:border-white/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.freeCta">Empezar gratis</a>
       </div>
 
-      <!-- Pro (highlighted) -->
+      <!-- Premium -->
+      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/10 flex flex-col">
+        <h3 class="text-lg font-semibold text-slate-100 mb-1" data-i18n="price.premiumName">Premium</h3>
+        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.premiumPrice">$10/mes</p>
+        <p class="text-sm text-slate-400 mb-6" data-i18n="price.premiumDesc">Más áreas, más IA, más profundidad</p>
+        <ul class="space-y-2.5 mb-8 flex-1">
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF1">Áreas ilimitadas</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF2">100 créditos IA al mes</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF3">Execution Plan + captura por voz</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF4">Sugerencias semánticas y canvas IA</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF5">Estadísticas y mapas de proyecto</span></li>
+        </ul>
+        <a href="https://app.nuviaflow.app/" class="block text-center px-6 py-3 rounded-xl border border-white/15 text-slate-300 font-medium hover:bg-white/5 hover:border-white/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.pCta">Empezar gratis</a>
+      </div>
+
+      <!-- Unlimited (highlighted) -->
       <div class="p-6 rounded-2xl bg-slate-800/30 border border-blue-500/40 flex flex-col relative shadow-lg shadow-blue-500/5">
-        <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] font-medium px-3 py-0.5 rounded-full bg-blue-500 text-white whitespace-nowrap" data-i18n="price.pBadge">Más popular</span>
-        <h3 class="text-lg font-semibold text-slate-100 mb-1">Pro</h3>
-        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.pPrice">$25/mes</p>
-        <p class="text-sm text-slate-400 mb-6" data-i18n="price.pDesc">Para builders serios</p>
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] font-medium px-3 py-0.5 rounded-full bg-blue-500 text-white whitespace-nowrap" data-i18n="price.uBadge">Loop completo</span>
+        <h3 class="text-lg font-semibold text-slate-100 mb-1" data-i18n="price.unlimitedName">Ilimitado</h3>
+        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.unlimitedPrice">$25/mes</p>
+        <p class="text-sm text-slate-400 mb-6" data-i18n="price.unlimitedDesc">IA sin techo, coach en Telegram y todo el loop — sin asteriscos.</p>
         <ul class="space-y-2.5 mb-8 flex-1">
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF1">Todo en Starter</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF2">Priorización con IA</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF3">Modo foco</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.pF4">Analytics de ejecución</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.uF1">Todo en Premium</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.uF2">IA ilimitada</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.uF3">Nuvia Coach en Telegram</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.uF4">Today's Mission + Under watch</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.uF5">Execution Gap, rituals y visualizaciones</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.uF6">Prioridad en roadmap y soporte directo</span></li>
+          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.uF7">Para quien quiere cerrar de verdad — no solo planear</span></li>
         </ul>
-        <a href="https://app.nuviaflow.app/" class="block text-center px-6 py-3 rounded-full bg-blue-500 text-white font-medium hover:bg-blue-600 transition shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.pCta">Unirse a la lista</a>
-      </div>
-
-      <!-- Team -->
-      <div class="p-6 rounded-2xl bg-slate-800/30 border border-white/5 flex flex-col">
-        <h3 class="text-lg font-semibold text-slate-100 mb-1">Team</h3>
-        <p class="text-3xl font-bold text-slate-100 mb-1" data-i18n="price.tPrice">$49/mes</p>
-        <p class="text-sm text-slate-400 mb-6" data-i18n="price.tDesc">Para equipos pequeños hasta 20</p>
-        <ul class="space-y-2.5 mb-8 flex-1">
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF1">Todo en Pro</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF2">Workspace de equipo</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF3">Proyectos compartidos</span></li>
-          <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-blue-400 shrink-0">✓</span> <span data-i18n="price.tF4">Soporte prioritario</span></li>
-        </ul>
-        <a href="#early-access" class="block text-center px-6 py-3 rounded-xl border border-white/15 text-slate-300 font-medium hover:bg-white/5 hover:border-white/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.tCta">Unirse a la lista</a>
+        <a href="https://app.nuviaflow.app/" class="block text-center px-6 py-3 rounded-full bg-blue-500 text-white font-medium hover:bg-blue-600 transition shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" data-i18n="price.uCta">Empezar gratis</a>
       </div>
     </div>
 
-    <p class="text-center text-sm text-slate-500 mt-8" data-i18n="price.trust">Precios de lanzamiento — Únete a la lista hoy. Sin tarjeta de crédito.</p>
+    <p class="text-center text-sm text-slate-500 mt-8 max-w-2xl mx-auto leading-relaxed" data-i18n="price.trust">Los créditos IA cubren acciones Pro: planes de ejecución, voz y sugerencias. Hoy acceso completo mientras construimos — sin tarjeta.</p>
   </div>
 </section>
 
@@ -466,7 +539,7 @@
 
 <!-- ========== FOOTER ========== -->
 <footer class="py-8 px-6 border-t border-white/5 text-center text-slate-500 text-sm" data-i18n="footer.tagline">
-  Nuvia Flow — El sistema de ejecución para builders ambiciosos.
+  Nuvia Flow — El Personal Operating System para founders que ejecutan.
 </footer>
 
 </div>

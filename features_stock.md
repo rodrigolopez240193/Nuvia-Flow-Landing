@@ -2,6 +2,27 @@
 
 Lista orientada a **amplitud**; cada viñeta es una capacidad distinta del producto o del stack.
 
+## Landing messaging (2026-06)
+
+Posicionamiento público en `flow-landing/` — alinear con producto live en `app.nuviaflow.app`.
+
+| Promesa en landing | Estado producto | Notas |
+|--------------------|-----------------|-------|
+| Personal Operating System para founders | Live | Hero + footer |
+| Nuvia Coach · Telegram + app | Live | Standup, accountability, Today's Mission |
+| Today's Mission + Under watch | Live | Today dashboard, coaching APIs |
+| Execution Plan + voz | Live | Task plan workspace, Whisper |
+| Captura inteligente (voz, @área, semántica) | Live | Quick Capture, voice API |
+| Grafos de proyecto | Live | Project map |
+| Rituals y visualizaciones | Live | `/rituals`, visualization boards |
+| Execution Gap analytics | Live | Statistics page |
+| PWA instalable | Live | vite-plugin-pwa |
+| Planes Free / Premium / Ilimitado | Marketing (enforcement pendiente) | Free: 3 áreas, 5 créditos IA. Premium $10: 100 créditos. Ilimitado $25: IA + coach sin techo |
+
+**CTA único:** Empezar gratis → `https://app.nuviaflow.app/`
+
+**Social proof:** copy genérico (sin stats personales, proyectos reales ni atribución nominal).
+
 ## Cuenta y acceso
 
 - Registro y login con email y contraseña
