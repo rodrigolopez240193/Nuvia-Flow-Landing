@@ -100,7 +100,7 @@
       "feat.f8t": "Execution Gap",
       "feat.f8d": "Compromiso vs completado, semana a semana. Ve si tu radar coincide con lo que realmente cierras.",
       "feat.f9t": "Todo en un sistema",
-      "feat.f9d": "Vida y trabajo, español e inglés, PWA instalable. Un Personal Operating System, no cinco apps.",
+      "feat.f9d": "Un solo sistema para vida y trabajo — en español o inglés, desde el navegador o tu móvil.",
 
       // Coach section
       "coach.title": "Conoce a Nuvia",
@@ -291,7 +291,7 @@
       "feat.f8t": "Execution Gap",
       "feat.f8d": "Commitment vs completed, week over week. See if your radar matches what you actually close.",
       "feat.f9t": "One unified system",
-      "feat.f9d": "Life and work, English and Spanish, installable PWA. A Personal Operating System — not five apps.",
+      "feat.f9d": "One system for life and work — in English or Spanish, from your browser or phone.",
 
       // Coach section
       "coach.title": "Meet Nuvia",
@@ -412,20 +412,41 @@
       descEl.setAttribute('content', translations[lang]['meta.description']);
     }
 
-    document.getElementById('lang-es').classList.toggle('ring-2', lang === 'es');
-    document.getElementById('lang-es').classList.toggle('ring-blue-400', lang === 'es');
-    document.getElementById('lang-en').classList.toggle('ring-2', lang === 'en');
-    document.getElementById('lang-en').classList.toggle('ring-blue-400', lang === 'en');
+    ['es', 'en'].forEach(function (code) {
+      var btn = document.getElementById('lang-' + code);
+      if (btn) {
+        var active = lang === code;
+        btn.classList.toggle('bg-blue-500/20', active);
+        btn.classList.toggle('text-blue-300', active);
+        btn.classList.toggle('font-medium', active);
+        btn.classList.toggle('text-slate-400', !active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
+      var mobileBtn = document.getElementById('lang-' + code + '-mobile');
+      if (mobileBtn) {
+        var mobileActive = lang === code;
+        mobileBtn.classList.toggle('bg-blue-500/20', mobileActive);
+        mobileBtn.classList.toggle('text-blue-300', mobileActive);
+        mobileBtn.classList.toggle('font-medium', mobileActive);
+        mobileBtn.classList.toggle('text-slate-400', !mobileActive);
+        mobileBtn.setAttribute('aria-pressed', mobileActive ? 'true' : 'false');
+      }
+    });
   }
 
   document.getElementById('lang-es').addEventListener('click', function () { setLang('es'); });
   document.getElementById('lang-en').addEventListener('click', function () { setLang('en'); });
+  var langEsMobile = document.getElementById('lang-es-mobile');
+  var langEnMobile = document.getElementById('lang-en-mobile');
+  if (langEsMobile) langEsMobile.addEventListener('click', function () { setLang('es'); });
+  if (langEnMobile) langEnMobile.addEventListener('click', function () { setLang('en'); });
 
   var menuBtn = document.getElementById('mobile-menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
   if (menuBtn && mobileMenu) {
     menuBtn.addEventListener('click', function () {
       mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
     });
     mobileMenu.querySelectorAll('.mobile-nav-link').forEach(function (link) {
       link.addEventListener('click', function () {
